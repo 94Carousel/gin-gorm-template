@@ -1,0 +1,52 @@
+[GIN] 2017/02/14 - 11:31:48 | 404 [0m|      38.121µs | ::1 |  [0m GET     /
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:56198.360358msALTER TABLE `users` ADD `nickname` varchar(255);[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5640.72485msALTER TABLE `users` ADD `mobile` varchar(255);[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5641.564332msALTER TABLE `users` ADD `email` varchar(255);[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5669.761409msALTER TABLE `users` ADD `avatar` varchar(255);[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5673.65571msALTER TABLE `users` ADD `auth_token` varchar(255);[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5677.558439msALTER TABLE `users` ADD `last_sign_in_at` timestamp NULL;[]
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5631.335337msCREATE INDEX idx_users_nickname ON `users`(`nickname`) []
+
+2017/02/14 22:47:04 sql/Users/liuyingce/Project/GO/src/gin-template/models/base.go:5627.085055msCREATE INDEX idx_users_mobile ON `users`(`mobile`) []
+[GIN] 2017/02/14 - 22:47:14 | 200 [0m|     101.495µs | ::1 |  [0m GET     /
+[GIN] 2017/02/14 - 22:47:16 | 200 [0m|      17.385µs | ::1 |  [0m GET     /api/articles
+[GIN] 2017/02/14 - 22:47:19 | 200 [0m|      51.964µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:47:31 | 200 [0m|      70.259µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:47:48 | 200 [0m|      26.893µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:47:52 | 200 [0m|     226.883µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:47:53 | 200 [0m|      24.886µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:48:10 | 200 [0m|      318.88µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:48:21 | 200 [0m|     181.921µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:48:32 | 200 [0m|     120.911µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:48:40 | 200 [0m|      218.56µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:49:04 | 200 [0m|     397.975µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:49:04 | 200 [0m|      225.33µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:49:05 | 200 [0m|      24.584µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:49:21 | 200 [0m|      883.28µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:49:22 | 200 [0m|      221.86µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:49:22 | 200 [0m|      31.232µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:50:12 | 200 [0m|      372.73µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:12 | 200 [0m|     373.145µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:13 | 200 [0m|    1.410859ms | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:50:28 | 200 [0m|     373.189µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:28 | 200 [0m|     150.877µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:28 | 200 [0m|      28.154µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:50:29 | 200 [0m|     266.984µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:29 | 200 [0m|     149.915µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:30 | 200 [0m|      28.327µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:50:36 | 200 [0m|      138.78µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:36 | 200 [0m|     132.473µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:37 | 200 [0m|       25.91µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:50:40 | 200 [0m|      35.134µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:40 | 200 [0m|      34.782µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:50:41 | 200 [0m|      44.163µs | ::1 |  [0m GET     /favicon.ico
+[GIN] 2017/02/14 - 22:51:16 | 200 [0m|      59.913µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:51:16 | 200 [0m|      38.792µs | ::1 |  [0m GET     /api/
+[GIN] 2017/02/14 - 22:51:16 | 200 [0m|      26.105µs | ::1 |  [0m GET     /favicon.ico
