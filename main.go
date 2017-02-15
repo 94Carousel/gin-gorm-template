@@ -26,17 +26,16 @@ func main() {
 	// initialize gin config
 	appSecret := config.Get("app", "secret").Value()
 	appName := config.Get("app", "name").Value()
-	store := sessions.NewCookieStore([]byte(appSecret))
+	sessionStore := sessions.NewCookieStore([]byte(appSecret))
 
 	r := gin.Default()
-	r.Use(sessions.Sessions(appName+"_session", store))
-
+	r.Use(sessions.Sessions("_"+appName+"_session", sessionStore))
 	api := r.Group("/api").Use(controllers.HandleRecovery())
 	{
 		api.GET("/", func(c *gin.Context) {
 			session := sessions.Default(c)
-			session.Set("count", "hello")
-			session.Save()
+			// session.Set("count", "hello")
+			// session.Save()
 			count := session.Get("count")
 			controllers.RespondOK(count, c)
 		})
