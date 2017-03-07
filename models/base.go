@@ -83,7 +83,6 @@ func connectDatabase() {
 	case "sqlite3", "sqlite":
 		option = fmt.Sprintf("db/%v.db", database)
 	}
-	fmt.Println(option)
 
 	DB, DBErr = gorm.Open(adapter, option)
 	if DBErr != nil {
