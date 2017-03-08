@@ -1,13 +1,14 @@
 package main
 
 import (
+	"fmt"
+	"gin-template/api"
 	"gin-template/config"
-	"gin-template/controllers"
 	"gin-template/models"
 	"io"
+	"net/http"
 	"os"
 
-	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -15,36 +16,28 @@ import (
 )
 
 func main() {
+	conf := config.InitEnv()
 	// initialize logfile
 	f := config.LogFile()
 	defer f.Close()
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
-	// initialize database
+
+	// initialize database ORM
 	models.InitDB()
 	defer models.DB.Close()
 
-	// initialize gin config
-	appSecret := config.Get("app", "secret").Value()
-	appName := config.Get("app", "name").Value()
-	sessionStore := sessions.NewCookieStore([]byte(appSecret))
+	// Gin run environment
+	gin.SetMode(conf.RunMode)
 
-	r := gin.Default()
-	r.Use(sessions.Sessions("_"+appName+"_session", sessionStore))
-	api := r.Group("/api").Use(controllers.HandleRecovery())
-	{
-		api.GET("/", func(c *gin.Context) {
-			session := sessions.Default(c)
-			// session.Set("count", "hello")
-			// session.Save()
-			count := session.Get("count")
-			controllers.RespondOK(count, c)
-		})
+	// HTTPServer
+	api := &api.API{Config: conf}
+	server := &http.Server{
+		Addr:           conf.Addr,
+		Handler:        api.Router(),
+		MaxHeaderBytes: 1 << 20,
 	}
-
-	r.NoRoute(controllers.HandleNoRoute)
-	port := config.Get("app", "port").Value()
-	if port == "" {
-		port = "8888"
+	err := server.ListenAndServe()
+	if err != nil {
+		fmt.Println("can't start server: ", err)
 	}
-	r.Run(":" + port)
 }

@@ -1,38 +1,44 @@
-package controllers
+package api
 
 import (
 	"fmt"
+	"gin-template/config"
 
 	"github.com/gin-gonic/gin"
 )
 
+// API defined API struct
+type API struct {
+	Config *config.Config
+}
+
 // RespondOK Success
-func RespondOK(body interface{}, c *gin.Context) {
-	c.JSON(200, gin.H{
+func RespondOK(ctx *gin.Context, body interface{}) {
+	ctx.JSON(200, gin.H{
 		"code": 0,
 		"msg":  "",
 		"body": body})
 }
 
 // RespondError failded
-func RespondError(code int, msg interface{}, c *gin.Context) {
-	c.JSON(200, gin.H{"code": code, "msg": msg})
+func RespondError(ctx *gin.Context, code int, msg interface{}) {
+	ctx.JSON(200, gin.H{"code": code, "msg": msg})
 }
 
 // HandleNoRoute return error 404 when routes unused
-func HandleNoRoute(c *gin.Context) {
-	RespondError(404, "page not found", c)
+func HandleNoRoute(ctx *gin.Context) {
+	RespondError(ctx, 404, "page not found")
 }
 
 // HandleRecovery handle global recovery and return error 500 JSON
 func HandleRecovery() gin.HandlerFunc {
-	return func(c *gin.Context) {
+	return func(ctx *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
 				str := fmt.Sprint(err)
-				RespondError(500, str, c)
+				RespondError(ctx, 500, str)
 			}
 		}()
-		c.Next()
+		ctx.Next()
 	}
 }
