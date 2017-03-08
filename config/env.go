@@ -10,12 +10,14 @@ type Config struct {
 	AppName    string `env:"GIN_APP_NAME" envDefault:"gin"`
 	SecretKey  string `env:"GIN_SECRET_KEY"`
 	DBAdapter  string `env:"DB_ADAPTER" envDefault:"sqlite"`
+	DBHostName string `env:"DB_HOSTNAME" envDefault:"localhost"`
 	DBDataBase string `env:"DB_DATABASE" envDefault:"gin.db"`
 	DBUserName string `env:"DB_USERNAME"`
 	DBPassWord string `env:"DB_PASSWORD"`
-	DBPort     int    `env:"DB_PORT"`
+	DBPort     string `env:"DB_PORT"`
 }
 
+// EnvConfig Config
 var EnvConfig *Config
 
 // InitEnv return global config

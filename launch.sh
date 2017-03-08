@@ -5,4 +5,9 @@ do
   export $env
 done
 
-fresh
+
+if `which fresh`; then
+  fresh
+else
+  go run main.go
+fi
