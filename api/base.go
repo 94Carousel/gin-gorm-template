@@ -2,7 +2,8 @@ package api
 
 import (
 	"fmt"
-	"gin-template/config"
+
+	"github.com/yingce/gin-gorm-template/config"
 
 	"github.com/gin-gonic/gin"
 )

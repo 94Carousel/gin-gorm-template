@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"gin-template/api"
-	"gin-template/config"
-	"gin-template/models"
 	"io"
 	"net/http"
 	"os"
+
+	"github.com/yingce/gin-gorm-template/api"
+	"github.com/yingce/gin-gorm-template/config"
+	"github.com/yingce/gin-gorm-template/models"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"

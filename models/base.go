@@ -2,8 +2,9 @@ package models
 
 import (
 	"fmt"
-	"gin-template/config"
 	"log"
+
+	"github.com/yingce/gin-gorm-template/config"
 
 	"github.com/jinzhu/gorm"
 )
@@ -57,14 +58,21 @@ func migrateTables() {
 }
 
 func connectDatabase() {
-	var adapter, option string
-	dbcfg := config.GetSection("database")
-	adapter = dbcfg.Key("adapter").Value()
-	hostname := dbcfg.Key("hostname").Value()
-	username := dbcfg.Key("username").Value()
-	password := dbcfg.Key("password").Value()
-	database := dbcfg.Key("database").Value()
-	port := dbcfg.Key("port").Value()
+	var option string
+	// dbcfg := config.GetSection("database")
+	// adapter = dbcfg.Key("adapter").Value()
+	// hostname := dbcfg.Key("hostname").Value()
+	// username := dbcfg.Key("username").Value()
+	// password := dbcfg.Key("password").Value()
+	// database := dbcfg.Key("database").Value()
+	// port := dbcfg.Key("port").Value()
+	dbcfg := config.EnvConfig
+	adapter := dbcfg.DBAdapter
+	hostname := dbcfg.DBHostName
+	username := dbcfg.DBUserName
+	password := dbcfg.DBPassWord
+	database := dbcfg.DBDataBase
+	port := dbcfg.DBPort
 
 	if port == "" {
 		switch adapter {

@@ -1,7 +1,7 @@
 package api
 
 import (
-	"gin-template/config"
+	"github.com/yingce/gin-gorm-template/config"
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"

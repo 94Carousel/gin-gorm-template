@@ -1,5 +1,5 @@
 {
-	"ImportPath": "gin-template",
+	"ImportPath": "github.com/yingce/gin-gorm-template",
 	"GoVersion": "go1.8",
 	"GodepVersion": "v79",
 	"Deps": [
@@ -7,6 +7,11 @@
 			"ImportPath": "github.com/boj/redistore",
 			"Comment": "v1.2",
 			"Rev": "fc113767cd6b051980f260d6dbe84b2740c46ab0"
+		},
+		{
+			"ImportPath": "github.com/caarlos0/env",
+			"Comment": "v2.1-8-g9474f19",
+			"Rev": "9474f19b515f52326c7d197d2d097caa7fc7485e"
 		},
 		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
