@@ -14,7 +14,7 @@ include ENV
 export
 
 ## Hotreload checking
-FRESH := $(shell which fresh1 2> /dev/null)
+FRESH := $(shell which fresh 2> /dev/null)
 ifdef FRESH
 	RUN_COMMAND=fresh
 else
@@ -25,11 +25,11 @@ default: run
 
 run:
 	@echo "🐳 $@ Running Web Server with ${RUN_COMMAND} 🐳"
-	${RUN_COMMAND}
+	$(shell ${RUN_COMMAND})
 
 go:
 	@echo "🐳 $@ Running Web Server Using Go 🐳"
-	go run main.go
+  $(shell go run main.go)
 
 build: fmt
 	${BUILD_OPTS} go build ${GO_LDFLAGS} -v -o ./web main.go
