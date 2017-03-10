@@ -9,6 +9,7 @@ import (
 	"github.com/yingce/gin-gorm-template/api"
 	"github.com/yingce/gin-gorm-template/config"
 	"github.com/yingce/gin-gorm-template/models"
+	"github.com/yingce/gin-gorm-template/store"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -27,6 +28,7 @@ func main() {
 	models.InitDB()
 	defer models.DB.Close()
 
+	store.InitRedis()
 	// Gin run environment
 	gin.SetMode(conf.RunMode)
 

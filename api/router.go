@@ -2,6 +2,7 @@ package api
 
 import (
 	"github.com/yingce/gin-gorm-template/config"
+	"github.com/yingce/gin-gorm-template/middleware"
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -20,5 +21,6 @@ func (api *API) Router() *gin.Engine {
 	router.GET("/", api.HomeIndex)
 	router.NoRoute(HandleNoRoute)
 	router.Use(HandleRecovery())
+	router.Use(middleware.CORSMiddleware())
 	return router
 }

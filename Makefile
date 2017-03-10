@@ -29,7 +29,10 @@ run:
 
 go:
 	@echo "🐳 $@ Running Web Server Using Go 🐳"
-  $(shell go run main.go)
+	export; \
+	echo $$DB_PORT; \
+	$(shell ./launch.sh go)
+
 
 build: fmt
 	${BUILD_OPTS} go build ${GO_LDFLAGS} -v -o ./web main.go

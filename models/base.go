@@ -59,20 +59,13 @@ func migrateTables() {
 
 func connectDatabase() {
 	var option string
-	// dbcfg := config.GetSection("database")
-	// adapter = dbcfg.Key("adapter").Value()
-	// hostname := dbcfg.Key("hostname").Value()
-	// username := dbcfg.Key("username").Value()
-	// password := dbcfg.Key("password").Value()
-	// database := dbcfg.Key("database").Value()
-	// port := dbcfg.Key("port").Value()
-	dbcfg := config.EnvConfig
-	adapter := dbcfg.DBAdapter
-	hostname := dbcfg.DBHostName
-	username := dbcfg.DBUserName
-	password := dbcfg.DBPassWord
-	database := dbcfg.DBDataBase
-	port := dbcfg.DBPort
+	dbcfg := config.GetSection("database")
+	adapter := dbcfg.Key("adapter").Value()
+	hostname := dbcfg.Key("hostname").Value()
+	username := dbcfg.Key("username").Value()
+	password := dbcfg.Key("password").Value()
+	database := dbcfg.Key("database").Value()
+	port := dbcfg.Key("port").Value()
 
 	if port == "" {
 		switch adapter {
