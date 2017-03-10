@@ -17,10 +17,10 @@ func (api *API) Router() *gin.Engine {
 
 	// defined router
 	router := gin.Default()
+	router.Use(HandleRecovery())
+	router.Use(middleware.CORSMiddleware())
 	router.Use(sessions.Sessions("_"+appName+"_session", sessionStore))
 	router.GET("/", api.HomeIndex)
 	router.NoRoute(HandleNoRoute)
-	router.Use(HandleRecovery())
-	router.Use(middleware.CORSMiddleware())
 	return router
 }
