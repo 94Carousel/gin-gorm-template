@@ -14,10 +14,9 @@ var Redis *redis.Client
 
 // InitRedis global initialize
 func InitRedis() {
-	redisCfg := config.GetSection("redis")
-	addr := redisCfg.Key("addr").Value()
-	password := redisCfg.Key("password").Value()
-	db, _ := redisCfg.Key("port").Int()
+	addr := config.EnvConfig.RedisAddr
+	password := config.EnvConfig.RedisPassWord
+	db := config.EnvConfig.RedisDB
 	Redis = redis.NewClient(&redis.Options{
 		Addr:     addr,
 		Password: password,
@@ -26,21 +25,21 @@ func InitRedis() {
 }
 
 func CacheSet(key string, value interface{}, expired ...time.Duration) {
-	cacheName := config.Get("app", "name").Value()
+	cacheName := config.EnvConfig.AppName
 	keyName := cacheName + "_cache:" + key
 	j, _ := json.Marshal(value)
 	var expiredAt time.Duration
 	if len(expired) > 0 {
 		expiredAt = expired[0]
 	}
-	Redis.Set(keyName+key, j, expiredAt)
+	Redis.Set(keyName, j, expiredAt)
 }
 
 func CacheGet(key string) (map[string]interface{}, bool) {
-	cacheName := config.Get("app", "name").Value()
+	cacheName := config.EnvConfig.AppName
 	keyName := cacheName + "_cache:" + key
 	var data map[string]interface{}
-	result, err := Redis.Get(keyName + key).Result()
+	result, err := Redis.Get(keyName).Result()
 	if err != nil || len(result) == 0 {
 		return nil, false
 	}

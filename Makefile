@@ -1,3 +1,4 @@
+.PHONY: run go build fmt
 ## OS checking
 OS := $(shell uname)
 ifeq ($(OS),Darwin)
@@ -25,13 +26,11 @@ default: run
 
 run:
 	@echo "🐳 $@ Running Web Server with ${RUN_COMMAND} 🐳"
-	$(shell ${RUN_COMMAND})
+	${RUN_COMMAND}
 
 go:
 	@echo "🐳 $@ Running Web Server Using Go 🐳"
-	export; \
-	echo $$DB_PORT; \
-	$(shell ./launch.sh go)
+	go run main.go
 
 
 build: fmt

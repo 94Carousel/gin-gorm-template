@@ -11,8 +11,8 @@ import (
 // Router defined api namespace router initialize
 func (api *API) Router() *gin.Engine {
 	// initialize gin config
-	appSecret := config.Get("app", "secret").Value()
-	appName := config.Get("app", "name").Value()
+	appSecret := config.EnvConfig.SecretKey
+	appName := config.EnvConfig.AppName
 	sessionStore := sessions.NewCookieStore([]byte(appSecret))
 
 	// defined router

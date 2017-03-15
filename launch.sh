@@ -1,9 +1,9 @@
 #!/bin/bash
 
-for env in `cat ENV`
-do
-  export $env
-done
+# for env in `cat ENV`
+# do
+#   export $env
+# done
 
 function Run() {
   if [[ `which fresh` ]] ; then
