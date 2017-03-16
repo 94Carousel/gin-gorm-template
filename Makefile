@@ -1,4 +1,4 @@
-.PHONY: run go build fmt
+.PHONY: run go build fmt deps
 ## OS checking
 OS := $(shell uname)
 ifeq ($(OS),Darwin)
@@ -25,13 +25,16 @@ endif
 default: run
 
 run:
-	@echo "🐳 $@ Running Web Server with ${RUN_COMMAND} 🐳"
+	@echo "🐳  $@ Running Web Server with ${RUN_COMMAND} 🐳"
 	${RUN_COMMAND}
 
 go:
-	@echo "🐳 $@ Running Web Server Using Go 🐳"
+	@echo "🐳  $@ Running Web Server Using Go 🐳"
 	go run main.go
 
+deps:
+	@echo "🐳  go deps ... 🐳"
+	go get github.com/tools/godep; godep restore
 
 build: fmt
 	${BUILD_OPTS} go build ${GO_LDFLAGS} -v -o ./web main.go
