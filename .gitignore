@@ -25,7 +25,6 @@ _testmain.go
 
 tmp/*
 log/*
-vendor/*
 db/*.db
 .idea/
 .vscode/
